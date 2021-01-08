@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>5.3. MCU &#8212; Dive into cheap deep learning 0.0.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/d2l.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.4. AI 中台" href="AI-zhongtai.html" />
+    <link rel="prev" title="5.2. mobile" href="mobile.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">5. </span>Deployment</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">5.3. </span>MCU</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_deploy/MCU.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://aieye-top.github.io/d2cl/d2cl.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/aieye-top/d2cl">
+                  <i class="fab fa-github"></i>
+                  Github
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/IQ.html">1.2. IQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">2. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">2.1. Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">3. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">3.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">3.2. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">3.3. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">3.4. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">3.5. GhostNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/compression.html">3.6. compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/pruning.html">3.7. Pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/Knowledge-Distillation.html">3.8. Knowledge-Distillation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">4. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">4.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">4.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">4.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">4.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">4.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">5.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">5.2. mobile</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AI-zhongtai.html">5.4. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/IQ.html">1.2. IQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">2. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">2.1. Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">3. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">3.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">3.2. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">3.3. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">3.4. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">3.5. GhostNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/compression.html">3.6. compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/pruning.html">3.7. Pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/Knowledge-Distillation.html">3.8. Knowledge-Distillation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">4. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">4.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">4.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">4.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">4.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">4.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">5.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">5.2. mobile</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AI-zhongtai.html">5.4. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="mcu">
+<h1><span class="section-number">5.3. </span>MCU<a class="headerlink" href="#mcu" title="Permalink to this headline">¶</a></h1>
+<p>今年 7 月，韩松团队发表的论文 “MCUNet: Tiny Deep Learning on IoT
+Devices” 中提出了 MCUNet
+方案，可以通过高效的网络架构搜索（TinyNAS）和轻量推理引擎（TinyEngine）的联合设计，实现在
+MCU（Microcontroller Unit 微控制单元，又称单片机）上运行 ImageNet
+级别的推理。该论文第一作者林己在接受 DeepTech
+采访时表示，“我们发现，用我们的 MCUNet
+方案，基本上相对轻量级的应用，在手机上跑得比较快的应用，都可以部署到单片机上。”</p>
+<p>该论文显示，相比谷歌的 TF-Lite Micro 与 ARM 的 CMSIS-NN 的传统方案，使用
+MCUNet 进行学习推理所需要的内存可以减少为原来的
+29%，同时推理速度能够提升 1.7-3.3 倍。</p>
+<p><a class="reference external" href="http://tinyml.mit.edu/">http://tinyml.mit.edu/</a></p>
+<p>MCUNet 实现 IoT 设备上的微型机器学习 一直以来，深度学习在 IoT
+微型设备上的运行难点在于，单片机的硬件资源限制。因为单片机的内存资源仅为手机、GPU
+的几千分之一，这导致原本在手机和 GPU 上能够完美运行的 AI
+方案，根本无法放入单片机中（模型大小过大），运行就更是别想（activation过大）。先前的模型压缩、网络设计相关工作，主要是优化减小神经网络的计算量或者模型大小，没有考虑到运行时神经网络的
+activation 大小，这导致优化过的神经网络也难以满足单片机的资源限制。</p>
+<p>对此，韩松团队开发的 MCUNet 方案，采用 TinyNAS 和 TinyEngine
+结合的方式，能够合理规划单片机上仅有的内存，并进行高效的推理运算。</p>
+<p>其中，TinyNAS
+需要通过两个步骤完成对单片机有限的空间进行合理规划，以达到提升最终模型精确度的目的。</p>
+<p>第一步，自动搜索神经网络空间来适配不同硬件的资源限制，找到可以满足硬件资源限制的最高精度的搜索空间；第二步，根据不同搜索空间中神经网络计算量的分布，选择特定单片机的自由搜索空间进行网络架构的搜索。</p>
+<p>搜索空间时，需要输入分辨率和网络宽度进行搜索。大概有 108
+个可能的搜索空间配置，每个搜索空间配置包含 3.3×1025 个子网络。</p>
+<p>韩松团队认为，在内存约束下更有可能生成高 FLOPS
+模型的设计空间可以提供更高的模型容量，因此有可能实现高精度。对比红色和黑色，使用红色空间进行神经体系结构搜索可达到
+78.7% 的最终精度，而黑色空间则为 74.2%(在 ImageNet 100 上)。</p>
+<p>MIT提出微型深度学习技术MCUNet可在物联网设备高效运行</p>
+<p>图 | TinyNAS 通过分析不同搜索空间的 FLOP CDF 来选择最佳搜索空间</p>
+<p>经过 TinyNAS 的优化，确保单片机在硬件资源最佳分配的状态下使用 TinyEngine
+展开推理运算。</p>
+<p>在推理运算方面，传统的机器学习方案 TF-Lite Micro 与 CMSIS-NN
+采用的是基于解释器的运行框架。在推理运行的同时进行网络结构的解释，所以需要将神经网络操作中所有可能用到的算子以及支持所有上级的代码全部储存，这必须要有足够大的内存才能够承载。另外，解释型框架是在运行期间对神经网络的结构进行解释，这一动作也将增加运行的负担。</p>
+<p>这种 “甜蜜的负担” 对于 “身强力壮的巨人” 手机和 GPU
+等内存足够大的设备并无大碍，但对于单片机这种自身条件有限的 “小家伙”
+来说，简直寸步难行，甚至有将其压垮的架势。</p>
+<p>由此，韩松团队为 “小家伙” 量身定制了新的方案 ——MCUNet，林己向 DeepTech
+介绍称，MCUNet 使用 TinyEngine
+框架，将神经网络的编译和执行步骤分开进行。编译阶段明确决定好内存的调度、执行过程中的必备动作以及所需算子，在执行过程中，微型处理器上只需要对当前神经网络所执行的任务需要的算子进行储存，内存调度上也无需进行动态处理。做到节省解释时间的同时，也让内存资源本就紧张的单片机能够
+“松一口气”，让更大模型神经网络的运行看到一丝希望。</p>
+<p>实验结果显示，使用 TinyEngine 运行之下的推理，与传统框架 TF-Lite Micro
+对比，推理速度提升了 3 倍，内存占用缩减为1/4，在 ImageNet
+上的准确率则提高了 17%。</p>
+<p>MIT提出微型深度学习技术MCUNet可在物联网设备高效运行</p>
+<p>图 | TinyEngine 与传统框架推理效率、内存占用峰值、精确度对比</p>
+<p>值得注意的是，在该论文发表之后，韩松团队又加入了 in-place depthwise
+convolution 技术，结合 TinyNAS
+可以进一步缩小神经网络运行时的最大内存，同时降低神经网络运行的硬件需求，实现
+MCUNet
+方案推理运算下效率和准确率的进一步提升。另外，林己还提到，“现在我们还加入了目标检测相关的应用，比如可以用来检测人、车以及人有没有戴口罩等，而此前主要关注分类方面的应用”。</p>
+<p>MCUNet 诞生于新冠疫情期间
+“整体研发尤其后期，是在疫情下进行的，同学们都是在隔离的条件下独立完成研发，团队通过远程进行交流，其实做得很辛苦。”</p>
+<p>谈及 MCUNet
+的研发过程，韩松表示他印象最深刻的是疫情期间团队成员在无法面对面交流的情况下进行研发，挑战很大。</p>
+<p>前文提到，提出 MCUNet 方案的论文已入选今年的 NeurIPS
+spotlight。其实，除此之外，韩松团队今年入选 NeurIPS
+的还有另外两篇，分别为《TinyTL：降低内存占用而非参数量用于高效的设备上学习》和《可微分数据增强：训练数据高效的生成对抗网络》。在此不对另外两篇论文进行展开，简单了解下该团队中
+MCUNet 研发的主要成员。<a class="reference external" href="http://www.mittrchina.com/news/5866">1</a></p>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="mobile.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>5.2. mobile</div>
+         </div>
+     </a>
+     <a id="button-next" href="AI-zhongtai.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>5.4. AI 中台</div>
+        </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

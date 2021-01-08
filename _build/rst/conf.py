@@ -3,7 +3,7 @@ import sys
 sys.path.insert(0, '..')
 sys.path.insert(0, '.')
 
-project = "Deploying Demo for d2cl"
+project = "Dive into cheap deep learning"
 copyright = ""
 author = "The contributors"
 release = "0.0.1"
@@ -39,7 +39,7 @@ html_favicon = ''
 html_logo = ''
 
 latex_documents = [
-    (master_doc, "d2cl.tex", "Deploying Demo for d2cl",
+    (master_doc, "d2cl.tex", "Dive into cheap deep learning",
      author, 'manual'),
 ]
 

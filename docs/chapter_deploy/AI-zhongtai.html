@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>5.4. AI 中台 &#8212; Dive into cheap deep learning 0.0.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/d2l.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="5.3. MCU" href="MCU.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">5. </span>Deployment</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">5.4. </span>AI 中台</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_deploy/AI-zhongtai.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://aieye-top.github.io/d2cl/d2cl.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/aieye-top/d2cl">
+                  <i class="fab fa-github"></i>
+                  Github
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/IQ.html">1.2. IQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">2. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">2.1. Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">3. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">3.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">3.2. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">3.3. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">3.4. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">3.5. GhostNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/compression.html">3.6. compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/pruning.html">3.7. Pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/Knowledge-Distillation.html">3.8. Knowledge-Distillation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">4. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">4.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">4.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">4.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">4.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">4.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">5.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">5.2. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MCU.html">5.3. MCU</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.4. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/IQ.html">1.2. IQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">2. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">2.1. Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">3. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">3.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">3.2. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">3.3. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">3.4. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">3.5. GhostNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/compression.html">3.6. compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/pruning.html">3.7. Pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/Knowledge-Distillation.html">3.8. Knowledge-Distillation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">4. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">4.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">4.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">4.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">4.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">4.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">5.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">5.2. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MCU.html">5.3. MCU</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.4. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="ai">
+<h1><span class="section-number">5.4. </span>AI 中台<a class="headerlink" href="#ai" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><span class="section-number">5.4.1. </span>智能化需求<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>随着业务的不断发展，业务处于不同的发展阶段，对数据的需求也从刚开始的可用-满足BI分析，到后来的易用-敏捷化分析，到现在的好用-数据智能化。例如前台系统提出客户细分、个性化推荐、智能问答、模型预测等需求，后台数据探索需要进行关联分析、聚类分析、持续分析等，这些都向我们提出了数据智能化的需求。<a class="reference external" href="https://www.epubit.com/articleDetails?id=1567da9f096e4a338c70a861ba3ed621">5</a></p>
+<p>面对利润下滑和经营成本增加的压力,领先的企业已经进入智能化阶段。企业价值链的每环节都存在可利用AI改善盈利的空间。企业在推进智能化应用落地过程中,面临技术能力不足、资源重复建设、业务敏捷响应度低和投入产出比低四大难题。<a class="reference external" href="https://www.sgpjbg.com/baogao/23268.html">8</a></p>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">5.4.2. </span>中台<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>所谓的“中台”，与前台、后台相对应，在系统中被共用的中间件的集合。它存在的目的就是更好的服务前台，
+在数据信息化的时代不断地发展到数据、业务、人工智能等各个领域。包含技术中台、业务中台、组织中台、数据中台等一系列的数据平台带来共享和便捷性，中台的一个核心就是共享性，使得公有的部分通过中台的开发来完成，其余多条的业务线共享中台的三方面的内部能力，包括数据、计算资源、软件服务的共享。</p>
+<p>中台其实就是为前台而生，通过加入中台，而对前台实现“瘦身”，提升前台的规模化服务与创新能力，实现开发的敏捷性。进而更好的服务用户，使企业真正做到自身能力与用户需求的持续对接。<a class="reference external" href="https://zhuanlan.zhihu.com/p/130959439">4</a></p>
+<div class="section" id="id3">
+<h3><span class="section-number">5.4.2.1. </span>数据中台<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>数据中台对一个企业，起着至关重要的作用，各个业务系统经年累月以烟囱架构形式存在而导致的数据孤岛、数据隔离、数据不一致等等。因为这些问题实在是过于繁杂，因此数据仓库、数据湖、主数据治理等一系列的工作职能应运而生。</p>
+<p>一个企业各个应用源源不断的产生数据，各个业务模块的数据汇总，经过统一的清洗、归类、纠错、标注、定义、颗粒化及构建索引，形成数据中台。<a class="reference external" href="https://blog.csdn.net/m0_52274166/article/details/110815537">6</a>数据中台为智能化应用开发提供了数据和模型的存储和计算的能力，但未涉及AI工程能力建设问题。此外,数据中台的数据治理依赖于人工操作，且难以满足不同场景的个性化需求。</p>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">5.4.2.2. </span>AI中台<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>AI中台是一个在数据中台基础上，再加上各类算法及机器学习，来构建大规模智能服务的基础设施，对企业需要的算法模型提供了分步构建和全生命周期管理的服务，让企业可以将自己的业务不断下沉为一个个算法模型，以达到快速复用、组合创新、规模化构建智能服务部署效率的目的。<a class="reference external" href="http://www.woshipm.com/ai/2679608.html">2</a></p>
+<p>AI 中台是为企业智能应用提供 AI 能力支持的统一共享服务平台,
+主要包括硬件层、开发平台层、资产层
+(算法库&amp;样本库）、业务逻辑层和平台管理层。</p>
+<ul class="simple">
+<li><p>硬件层:成千上万的 GPU/CPU/FPGA 提供算力。</p></li>
+<li><p>开发平台层:主要负责数据处理、模型训练&amp;发布。数据处理主要包括访问数据中台、数据库或其他数据存储系统的数据,并提供数据淸洗、数据标注、数据分析、和特征工程等能力;模型训练提供多种建模方式,如可视化拖拉拽建模,
+Notebook建模等,兼容多种高性能训练和推理引擎框架,如TensorFlow、
+Pytorch、
+MXNet等。不同A模型框架可以采用相同存储模型数据格式并交互转换。</p></li>
+<li><p>资产层:包括算法库&amp;样本库,内置特征工程、机器学习、深度学习和NLP等A算子和大量
+Auto
+ML模块。随着开发场景数的积累,算法库&amp;样本库内置算子数量增加。企业可将算法封装为独立算子,可供直接调用、或进行二次开发。</p></li>
+<li><p>业务逻辑层:主要是指根据对业务需求的理解,将业务问题转化为数学问题,提供可复用的建模方案模板、服务编排等能力。此外,业务逻辑层能够将算法能力包装成A组件,如通用A组件有OCR、人脸识别、语义识别和图像识别等,场景化A服务组件有输电本体缺陷识别、变电站设备缺陷识别(针对能源行业场景)等。随着场景开发经验积累,企业可将组件沉淀为模板,针对相似场景的开发,企业可通过AP丨直接调用已有模板。</p></li>
+<li><p>平台管理层:负责角色权限管理、账户管理、资源统一管理等功能。如,资源统一管理是指对CPU、GPU资源的管理和整合,以容器化方式对算力虚拟化,实现弹性扩容、性能加速等功能,且不同部门和项目之间可共享集群资源,避免了资源浪费。此外,AI中台支持对接不同云平台上进行模型训练,训练完成后模型可一键部署至云平台API、设备端SDK和私有服务器部署等不同运行环境。</p></li>
+</ul>
+<p>在实际落地过程中,AI中台多采取分布式微服务架构,各模块间耦合度较低,企业会结合自身业务需求,调整AI中台架构。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">5.4.3. </span>实例<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><span class="section-number">5.4.3.1. </span>快手<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>来自快手 AI 平台部、Ytech 西雅图人工智能实验室、FeDA
+商业化智能实验室的负责人刘霁讲述了 “ AI中台 ”
+在快手公司内部的实践。<a class="reference external" href="http://www.mittrchina.com/news/5144">1</a></p>
+<p>数据中台：数据收集——&gt;数据管理——&gt;特征提取</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>模型/算法设计： 推荐、CV、NLP、Speech、RL等</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>AI中台： 模型训练——&gt;模型推理上线——&gt;结果监控和反馈</p>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">5.4.3.2. </span>金融<a class="reference external" href="https://www.sgpjbg.com/i-19506.html">7</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>不同行业的AI中台应用落地进展差异化较大,AI中台在金融行业的进展最为迅速。AI中台在消费品与零售、政府与公共服务和工业与能源行业落地较为缓慢,目前头部企业已有最佳实践案例。</p>
+<p>目前,大型银行在金融科技领域的预算约为上一年度营收的2-3%,针对A的预算每年约在3000万以上,支持金融机构部署跨部门A平台,并基于平台进行大规模应用开发。并且,出于安全性和保密性考虑,金融机构对系统的自主可控性有较高要求。因此,金融机构,尤其是大型银行更倾向于自行构建独立的AI中台纳管不断增加的A场景数。</p>
+<p>目前,头部企业已经基本完成了AI中台架构的搭建,中长尾企业也开始尝试AI中台构建。但实际投产的A应用较为有限,主要集中在营销和风控领域。例如,某国有银行的AI中台建设规划涉及五大场景,预测授信、OCR(身份证和营业执照识别)、反洗钱、手机银行精准营销和客服智能外呼情景分析。现阶段,仅OCR项目已经投产,其他项目仍处于研发阶段。</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">5.4.4. </span>未来<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>AI中台使得AI服务复用，降本增效；从而让使用者重新回归到业务的理解和创意的赛道上来，关注自己的业务逻辑。</p>
+<p>随着场景经验积累,AI中台行业化趋势凸显。大型企业已经入平台规模化阶段,未来将过采购平台扩容授权方式自建A应用。中长尾企业仍处于“烟囱式”应用开发阶段,更倾向于与平台供应商、软件集成商等合作伙伴合作,共同搭建AI中台应用。<a class="reference external" href="https://blog.csdn.net/m0_52274166/article/details/110815537">6</a></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">5.4. AI 中台</a><ul>
+<li><a class="reference internal" href="#id1">5.4.1. 智能化需求</a></li>
+<li><a class="reference internal" href="#id2">5.4.2. 中台</a><ul>
+<li><a class="reference internal" href="#id3">5.4.2.1. 数据中台</a></li>
+<li><a class="reference internal" href="#id4">5.4.2.2. AI中台</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">5.4.3. 实例</a><ul>
+<li><a class="reference internal" href="#id6">5.4.3.1. 快手</a></li>
+<li><a class="reference internal" href="#id7">5.4.3.2. 金融7</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">5.4.4. 未来</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="MCU.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>5.3. MCU</div>
+         </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

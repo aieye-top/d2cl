@@ -22,6 +22,15 @@ MobileNet
 
 该网络将传统的卷积操作替换深度可分离卷积，即Depthwise卷积和Pointwise卷积的组合，相比传统的卷积操作，该组合可以大大节省参数量和计算量。与此同时，MobileNetV1也可以用于目标检测、图像分割等其他视觉任务中。[5]
 
+MobileNet is a stack of the separable convolution modules which are
+composed of depthwise conv and conv1x1 (pointwise conv). Image for post
+The separable conv independently performs convolution in spatial and
+channel domains. This factorization of convolution significantly reduces
+the computational cost from HWNK²M to HWNK² (depthwise) + HWNM
+(conv1x1), HWN(K² + M) in total. In general, M>>K² (e.g. K=3 and M ≥
+32), the reduction rate is roughly 1/8–1/9. The important point here is
+that the bottleneck of the computational cost is now conv1x1[8]
+
 ResNet
 ------
 

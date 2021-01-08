@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>2.1. MobileNet &#8212; Deploying Demo for d2cl 0.0.1 documentation</title>
+    <title>3.2. MobileNet &#8212; Dive into cheap deep learning 0.0.1 documentation</title>
 
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
@@ -22,17 +22,19 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/d2l.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="2. Introduction" href="index.html" /> 
+    <link rel="next" title="3.3. MobileNet-v2" href="mobilenet_v2.html" />
+    <link rel="prev" title="3.1. Lightweight" href="lightweight.html" /> 
   </head>
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
     <div class="mdl-layout__header-row">
         
         <nav class="mdl-navigation breadcrumb">
-            <a class="mdl-navigation__link" href="index.html"><span class="section-number">2. </span>Introduction</a><i class="material-icons">navigate_next</i>
-            <a class="mdl-navigation__link is-active"><span class="section-number">2.1. </span>MobileNet</a>
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">3. </span>Lightweight</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">3.2. </span>MobileNet</a>
         </nav>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
@@ -84,7 +86,7 @@ Show Source
       <span class="mdl-layout-title">
           <a class="title" href="../index.html">
               <span class="title-text">
-                  Deploying Demo for d2cl
+                  Dive into cheap deep learning
               </span>
           </a>
       </span>
@@ -100,9 +102,41 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Introduction</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. MobileNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/IQ.html">1.2. IQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">2. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">2.1. Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Lightweight</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lightweight.html">3.1. Lightweight</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet_v2.html">3.3. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shufflenet.html">3.4. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GhostNet.html">3.5. GhostNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compression.html">3.6. compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pruning.html">3.7. Pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Knowledge-Distillation.html">3.8. Knowledge-Distillation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">4. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">4.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">4.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">4.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">4.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">4.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">5. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">5.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">5.2. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">5.3. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">5.4. AI 中台</a></li>
 </ul>
 </li>
 </ul>
@@ -121,7 +155,7 @@ Show Source
       <span class="mdl-layout-title">
           <a class="title" href="../index.html">
               <span class="title-text">
-                  Deploying Demo for d2cl
+                  Dive into cheap deep learning
               </span>
           </a>
       </span>
@@ -137,9 +171,41 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Introduction</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. MobileNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/IQ.html">1.2. IQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">2. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">2.1. Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Lightweight</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lightweight.html">3.1. Lightweight</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet_v2.html">3.3. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shufflenet.html">3.4. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GhostNet.html">3.5. GhostNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compression.html">3.6. compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pruning.html">3.7. Pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Knowledge-Distillation.html">3.8. Knowledge-Distillation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">4. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">4.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">4.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">4.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">4.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">4.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">5. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">5.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">5.2. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">5.3. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">5.4. AI 中台</a></li>
 </ul>
 </li>
 </ul>
@@ -168,29 +234,37 @@ Show Source
  * [6]: https://github.com/shicai/MobileNet-Caffe
  * [7]: https://www.zhihu.com/question/58941804
 --><div class="section" id="mobilenet">
-<h1><span class="section-number">2.1. </span>MobileNet<a class="headerlink" href="#mobilenet" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.2. </span>MobileNet<a class="headerlink" href="#mobilenet" title="Permalink to this headline">¶</a></h1>
 <p>该网络将传统的卷积操作替换深度可分离卷积，即Depthwise卷积和Pointwise卷积的组合，相比传统的卷积操作，该组合可以大大节省参数量和计算量。与此同时，MobileNetV1也可以用于目标检测、图像分割等其他视觉任务中。[5]</p>
+<p>MobileNet is a stack of the separable convolution modules which are
+composed of depthwise conv and conv1x1 (pointwise conv). Image for post
+The separable conv independently performs convolution in spatial and
+channel domains. This factorization of convolution significantly reduces
+the computational cost from HWNK²M to HWNK² (depthwise) + HWNM
+(conv1x1), HWN(K² + M) in total. In general, M&gt;&gt;K² (e.g. K=3 and M ≥
+32), the reduction rate is roughly 1/8–1/9. The important point here is
+that the bottleneck of the computational cost is now conv1x1[8]</p>
 <div class="section" id="resnet">
-<h2><span class="section-number">2.1.1. </span>ResNet<a class="headerlink" href="#resnet" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.1. </span>ResNet<a class="headerlink" href="#resnet" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="activation">
-<h2><span class="section-number">2.1.2. </span>Activation<a class="headerlink" href="#activation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.2. </span>Activation<a class="headerlink" href="#activation" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">2.1.3. </span>轻量化网络的客观需求<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.3. </span>轻量化网络的客观需求<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>小、速度</p>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">2.1.4. </span>本文方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.4. </span>本文方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>根据应用需求与资源限制（延迟，大小） 优化延迟 深度可分离卷积
 设置两个超参数：balance准确率与延迟</p>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">2.1.5. </span>结构<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.5. </span>结构<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>通过步长来降采样 (n+2p-f)/s + 1* (n+2p-f)/s + 1 尺度维度变化</p>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">2.1.6. </span>深度可分离卷积<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.6. </span>深度可分离卷积<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>深度卷积负责各个通道 点卷积1<em>1</em>M，每个卷积一个像素</p>
 <p>深度可分离卷积 分为 深度卷积和 点卷积</p>
 <p>TODO:https://ai.deepshare.net/detail/v_5ee645312d94a_eMNJ5Jws/3?from=p_5ee641d2e8471_5z8XYfL6&amp;type=6</p>
@@ -442,13 +516,13 @@ convolution)。<a class="reference external" href="https://cygao.xyz/2019/07/12/
       <span class="caption-text">Table Of Contents</span>
     </p>
     <ul>
-<li><a class="reference internal" href="#">2.1. MobileNet</a><ul>
-<li><a class="reference internal" href="#resnet">2.1.1. ResNet</a></li>
-<li><a class="reference internal" href="#activation">2.1.2. Activation</a></li>
-<li><a class="reference internal" href="#id1">2.1.3. 轻量化网络的客观需求</a></li>
-<li><a class="reference internal" href="#id2">2.1.4. 本文方法</a></li>
-<li><a class="reference internal" href="#id3">2.1.5. 结构</a></li>
-<li><a class="reference internal" href="#id4">2.1.6. 深度可分离卷积</a></li>
+<li><a class="reference internal" href="#">3.2. MobileNet</a><ul>
+<li><a class="reference internal" href="#resnet">3.2.1. ResNet</a></li>
+<li><a class="reference internal" href="#activation">3.2.2. Activation</a></li>
+<li><a class="reference internal" href="#id1">3.2.3. 轻量化网络的客观需求</a></li>
+<li><a class="reference internal" href="#id2">3.2.4. 本文方法</a></li>
+<li><a class="reference internal" href="#id3">3.2.5. 结构</a></li>
+<li><a class="reference internal" href="#id4">3.2.6. 深度可分离卷积</a></li>
 </ul>
 </li>
 </ul>
@@ -459,12 +533,19 @@ convolution)。<a class="reference external" href="https://cygao.xyz/2019/07/12/
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="lightweight.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>2. Introduction</div>
+            <div>3.1. Lightweight</div>
          </div>
+     </a>
+     <a id="button-next" href="mobilenet_v2.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>3.3. MobileNet-v2</div>
+        </div>
      </a>
   </div>
         
