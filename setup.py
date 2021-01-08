@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 def get_version() -> str:
     # https://packaging.python.org/guides/single-sourcing-package-version/
-    init = open(os.path.join("aieye", "__init__.py"), "r").read().split()
+    init = open(os.path.join("d2cl", "__init__.py"), "r").read().split()
     return init[init.index("__version__") + 2][1:-1]
 
 
