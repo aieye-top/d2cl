@@ -6,7 +6,7 @@ sys.path.insert(0, '.')
 project = "Dive into cheap deep learning"
 copyright = ""
 author = "The contributors"
-release = "0.0.1"
+release = "0.0.2"
 
 extensions = ["recommonmark","sphinxcontrib.bibtex","sphinxcontrib.rsvgconverter","sphinx.ext.autodoc","sphinx.ext.viewcode"]
 

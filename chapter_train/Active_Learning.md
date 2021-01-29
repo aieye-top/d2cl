@@ -13,5 +13,6 @@
 
 
 [1]: https://zhuanlan.zhihu.com/p/27019114
+TODO:
 [2]: https://github.com/ej0cl6/deep-active-learning
 [3]: https://github.com/rmunro/pytorch_active_learning

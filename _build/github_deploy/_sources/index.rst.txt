@@ -10,6 +10,8 @@ From your IQ, your devices, and your resource.
 
 从学习智力上、装备上、资源上。
 
+AI PM 2020年应届生失业一年求职。。
+
 .. toctree::
    :maxdepth: 1
 
@@ -20,7 +22,8 @@ From your IQ, your devices, and your resource.
    :numbered:
 
    chapter_introduction/index
-   chapter_write_code/index
    chapter_lightweight/index
+   chapter_compression/index
+   chapter_write_code/index
    chapter_train/index
    chapter_deploy/index

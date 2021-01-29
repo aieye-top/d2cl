@@ -1,0 +1,197 @@
+
+模型压缩
+========
+
+为什么需要模型压缩和加速
+------------------------
+
+预训练后的深度神经网络模型往往存在着严重的 过参数化
+问题，其中只有约5%的参数子集是真正有用的。为此，对模型进行 时间 和 空间
+上的压缩，便谓之曰“模型压缩” 。
+
+模型压缩技术的核心是确定每个层的压缩策略，因为它们具有不同的冗余，这通常需要手工试验和领域专业知识来探索模型大小、速度和准确性之间的大设计空间。这个设计空间非常大，人工探索法通常是次优的，而且手动进行模型压缩非常耗时。\ `4 <https://blog.csdn.net/weixin_34144848/article/details/89662408?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-18.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-18.controls>`__
+
+模型压缩技术包括 前端压缩 和 后端压缩 这两部分。
+
+复杂网络的实时性需求催生了另一个工作方向，这个工作方向的主要目的是研究如何将科研人员的研究成果落地到实际的硬件与应用场景中，并且要确保算法稳定、高效，从事相关的工作的人员就是所谓的工程派。但是我们知道复杂网络的参数数量肯定远多于简单网络的参数数量，这就导致复杂网络的模型体积远大于简单网络的模型体积，很多模型的体积极易超过1GB，这种体积的模型无论是在移动平台上存储（存储空间不足）还是执行（内存更小）都极其困难，因此工程派面临的第一个问题就是在尽量不降低模型精度的情况下缩小模型的体积。
+
+在模型压缩领域目前最重要的几个方法都是由Song Han在其文章《Deep
+Compression》[插图]中发表的，这篇论文是ICLR2016的最佳论文，它让工程人员看到了深度神经网络在移动平台设备落地的可能性，引导了后面对模型压缩的一系列研究。不过其实早在1989年，Lecun就已提出了OBD（Optimal
+Brain
+Damage）这种剔除模型中不重要的参数以减小网络体积的方法，只不过当时的计算资源还不足以解决神经网络的计算，更不用说深度神经网络了，即便如此该方法仍具有很好的前瞻性，目前很多方法基本都是基于该方法的思路。
+
+目前深度学习模型压缩方法的研究主要可以分为以下几个方向。\ `2 <https://weread.qq.com/web/reader/5a5326d0719ecf5f5a52e7ek0723244023c072b030ba601>`__
+1.
+更精细模型的设计。目前很多网络都具有模块化设计，在深度和宽度上都很大，这也造成了参数的冗余，因此有很多关于模型设计的研究，如SqueezeNet、MobileNet等，都使用更加细致、高效的模型设计，能够很大程度地缩小模型尺寸，并且也具有不错的性能。这些相关内容已经在前面的章节介绍过，此处不再赘述。
+2.
+权重稀疏化。在训练过程中，对权重的更新进行诱导，使其更加稀疏，对于稀疏矩阵，可以使用更加紧致的存储方式，如CSC，但是使用稀疏矩阵操作在硬件平台上运算效率不高，容易受到带宽的影响，因此加速并不明显。
+3.
+模型裁剪。结构复杂的网络具有非常好的性能，其参数也存在冗余，因此对于已训练好的模型网络，可以寻找一种有效的评判手段，将不重要的连接或者过滤器进行裁剪以减少模型的冗余。
+
+The literature classification and quantity of the review
+--------------------------------------------------------
+
+根据图2所示的文章发表年份来看,文献[8~11]的最新文章发表于2017年,对近年热门研究方向和新方法的介绍较少.而根据我们的最新整理,2018年之后发表在各大顶级会议的文章达64篇,占本文统计文章总数约40%,其中[13]首先提出在裁剪权重时加入能耗、延迟等硬件限制作为优化约束,为后续工作[14,15,16]提供启发.Network
+Trimming[17]将激活值为0的通道数量作为判断filter是否重要的标准,是结构化剪枝领域最有影响力的工作,开创了设置filter评价因子的技术分支.[18]提出的依据参数对应损失函数(loss)的梯度来自适应确定每个参数量化位数的方法,打破了固有的手工确定量化位数的观念,引领了新的自适应量化技术体系.由此看出近年出现的热门文章提供了不少新的研究方向,极大促进模型压缩与加速领域的发展,非常值得收录到我们的综述中,为读者带来新的思考.
+
+14.3 模型压缩方法 411\ `3 <https://furui@phei.com.cn/module/goods/wssd_content.jsp?bookid=57454>`__
+---------------------------------------------------------------------------------------------------
+
+前端压缩和后端压缩对比 411 网络剪枝 411 典型剪枝方法的对比 413 网络蒸馏
+413 前端压缩 413 后端压缩 414 低秩分解 416 总体压缩效果评价指标 416
+
+前端压缩\ `5 <https://leesen998.github.io/2018/01/15/%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0_%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9%E3%80%81%E5%8A%A0%E9%80%9F%E5%8F%8A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%83%A8%E7%BD%B2/>`__
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+（1）知识蒸馏（简单介绍）
+一个复杂的模型可以认为是由多个简单模型或者强约束条件训练而来，具有很好的性能，但是参数量很大，计算效率低，而小模型计算效率高，但是其性能较差。知识蒸馏是让复杂模型学习到的知识迁移到小模型当中,使其保持其快速的计算速度前提下，同时拥有复杂模型的性能，达到模型压缩的目的。但与剪枝、量化等方法想比，效果较差。(https://blog.csdn.net/Lucifer_zzq/article/details/79489248)
+（2）紧凑的模型结构设计（简单介绍）
+紧凑的模型结构设计主要是对神经网络卷积的方式进行改进，比如使用两个3x3的卷积替换一个5x5的卷积、使用深度可分离卷积等等方式降低计算参数量。
+（3）滤波器层面的剪枝（简单介绍） 参考链接
+https://blog.csdn.net/JNingWei/article/details/79218745 补充优缺点
+滤波器层面的剪枝属于非结构花剪枝，主要是对较小的权重矩阵整个剔除，然后对整个神经网络进行微调。此方式由于剪枝过于粗放，容易导致精度损失较大，而且部分权重矩阵中会存留一些较小的权重造成冗余，剪枝不彻底。
+
+后端压缩
+~~~~~~~~
+
+低秩近似 （简单介绍，参考链接补充优缺点）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+在卷积神经网络中，卷积运算都是以矩阵相乘的方式进行。对于复杂网络，权重矩阵往往非常大，非常消耗存储和计算资源。低秩近似就是用若干个低秩矩阵组合重构大的权重矩阵，以此降低存储和计算资源消耗。
+
+优点：
+
+1. 可以降低存储和计算消耗；
+2. 一般可以压缩2-3倍；精度几乎没有损失；
+
+缺点：
+
+模型越复杂，权重矩阵越大，利用低秩近似重构参数矩阵不能保证模型的性能
+
+未加限制的剪枝 （简单介绍，参考链接补充优缺点）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+剪枝操作包括：非结构化剪枝和结构化剪枝。非结构化剪枝是对神经网络中权重较小的权重或者权重矩阵进剔除，然后对整个神经网络进行微调；结构化剪枝是在网络优化目标中加入权重稀疏正则项，使部分权重在训练时趋于0。
+
+优点：
+
+1. 保持模型性能不损失的情况下，减少参数量9-11倍；
+2. 剔除不重要的权重，可以加快计算速度，同时也可以提高模型的泛化能力；
+
+缺点：
+
+1. 非结构化剪枝会增加内存访问成本；
+2. 极度依赖专门的运行库和特殊的运行平台，不具有通用性；
+
+压缩率过大时，破坏性能；
+
+参数量化 （简单介绍，参考链接补充优缺点）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+神经网络的参数类型一般是32位浮点型，使用较小的精度代替32位所表示的精度。或者是将多个权重映射到同一数值，权重共享
+优点：
+
+模型性能损失很小，大小减少8-16倍； 缺点：
+
+压缩率大时，性能显著下降；
+
+依赖专门的运行库，通用性较差；
+
+二值网络 （简单介绍，参考链接补充优缺点）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+对于32bit浮点型数用1bit二进制数-1或者1表示。 优点：
+
+网络体积小，运算速度快
+
+针对生成模型的协同进化压缩算法(ICCV2019)
+----------------------------------------
+
+在CycleGAN中的两个生成器网络将会被同时压缩：
+
+.. math::
+
+
+   \begin{aligned}
+   \hat{G}_{1}, \hat{G}_{2} &=\arg \min _{G_{1}, G_{2}} \mathcal{N}\left(G_{1}\right)+\mathcal{N}\left(G_{2}\right) \\
+   &+\gamma\left(\mathcal{L}_{\text {DisA}}\left(G_{1}, D_{1}\right)+\lambda \mathcal{L}_{\text {cyc }}\left(G_{1}, G_{2}, X\right)\right) \\
+   \quad+& \gamma\left(\mathcal{L}_{\text {DisA }}\left(G_{2}, D_{2}\right)+\lambda \mathcal{L}_{\text {cyc }}\left(G_{2}, G_{1}, Y\right)\right)
+   \end{aligned}
+
+AutoML模型压缩（AMC）
+---------------------
+
+基于学习而非规则
+
+这些基于规则的剪枝策略并非是最优的，而且不能从一个模型转移到另一个模型。随着神经网络结构的快速发展，我们需要一种自动化的方法来压缩它们，以提高工程师的效率。
+
+我们观察到压缩模型的精度对每层的稀疏性非常敏感，需要细粒度的动作空间。因此，我们不是在一个离散的空间上搜索，而是通过
+DDPG agent
+提出连续压缩比控制策略，通过反复试验来学习：在精度损失时惩罚，在模型缩小和加速时鼓励。actor-critic
+的结构也有助于减少差异，促进更稳定的训练。
+
+针对不同的场景，我们提出了两种压缩策略搜索协议:
+
+ ●  对于 latency-critical 的 AI 应用（例如，手机
+APP，自动驾驶汽车和广告排名），我们建议采用资源受限的压缩（resource-constrained
+compression），在最大硬件资源（例如，FLOP，延迟和模型大小）下实现最佳精度
+）；  ●  对于 quality-critical 的 AI 应用（例如 Google
+Photos），我们提出精度保证的压缩（accuracy-guaranteed
+compression），在实现最小尺寸模型的同时不损失精度。 DDPG Agent
+
+ ●  DDPG Agent 用于连续动作空间（0-1）
+ ●  输入每层的状态嵌入，输出稀疏比 压缩方法研究
+
+ ●  用于模型大小压缩的细粒度剪枝（ Fine-grained Pruning）  ●  粗粒度 /
+通道剪枝，以加快推理速度 搜索协议
+
+ ●  资源受限压缩，以达到理想的压缩比，同时获得尽可能高的性能。
+ ●  精度保证压缩，在保持最小模型尺寸的同时，完全保持原始精度。
+为了保证压缩的准确性，我们定义了一个精度和硬件资源的奖励函数。有了这个奖励函数，就能在不损害模型精度的情况下探索压缩的极限。
+
+ ●  对于资源受限的压缩，只需使用 Rerr = -Error
+ ●  对于精度保证的压缩，要考虑精度和资源（如 FLOPs）：RFLOPs =
+-Error∙log（FLOPs）
+
+“算力换算法”是当今AutoML系列工作的热点话题，AMC则属于“算力换算力”：用training时候的算力换取inference时候的算力。模型在完成一次训练之后，可能要在云上或移动端部署成千上万次，所以inference的速度和功耗至关重要。
+
+我们用AutoML做一次性投入来优化模型的硬件效率，然后在inference的时候可以得到事半功倍的效果。比如AMC将MobileNet
+inference时的计算量从569M MACs降低到285M
+MACs，在Pixel-1手机上的速度由8.1fps提高到14.6fps，仅有0.1%的top-1准确率损失。AMC采用了合适的搜索空间，对压缩策略的搜索仅需要4个GPU
+hours。
+
+总结来讲，AMC用“Training算力”换取“Inference算力”的同时减少的对“人力“的依赖。最后，感谢Google
+Cloud AI对本项目的支持。
+
+https://github.com/PaddlePaddle/PaddleSlim
+
+[8] Lei J, Gao X, Song J, Wang XL, Song ML. Survey of deep neural
+network model compression. Ruan Jian Xue Bao/Journal of Software,
+2018,29(2):251−266 (in Chinese).
+http://www.jos.org.cn/1000-9825/5428.htm [9] Ji RZ,Lin SH,Chao F,Wu
+YJ,Huang FY. Deep neural network compression and acceleration. Computer
+research and development,2018,55(09):1871-1888(in
+Chinese).http://crad.ict.ac.cn/CN/10.7544/issn1000-1239.2018.20180129
+[10] Cao WL,Rui JW,Li M. Survey of neural network model compression
+methods.Computer application research,2019,36(03):649-656(in Chinese).
+[11] Cheng Y, Wang D, Zhou P, et al. A survey of model compression and
+acceleration for deep neural networks. arXiv preprint arXiv:1710.09282,
+2017. [12] Cheng J, Wang P, Li G, et al. Recent advances in efficient
+computation of deep convolutional neural networks. Frontiers of
+Information Technology & Electronic Engineering, 2018, 19(1): 64-77.
+[13] Chen C, Tung F, Vedula N, et al. Constraint-aware deep neural
+network compression. Proceedings of the European Conference on Computer
+Vision (ECCV). 2018: 400-415. [14] Yang H, Zhu Y, Liu J.
+Energy-constrained compression for deep neural networks via weighted
+sparse projection and layer input masking. arXiv preprint
+arXiv:1806.04321, 2018. [15] Yang T J, Chen Y H, Sze V. Designing
+energy-efficient convolutional neural networks using energy-aware
+pruning. Proceedings of the IEEE Conference on Computer Vision and
+Pattern Recognition. 2017: 5687-5695. [16] Yang H, Zhu Y, Liu J. Ecc:
+Platform-independent energy-constrained deep neural network compression
+via a bilinear regression model. Proceedings of the IEEE Conference on
+Computer Vision and Pattern Recognition. 2019: 11206-11215. [17] Hu H,
+Peng R, Tai Y W, et al. Network trimming: A data-driven neuron pruning
+approach towards efficient deep architectures. arXiv preprint
+arXiv:1607.03250, 2016. [18] Khoram S, Li J. Adaptive quantization of
+neural networks. 2018

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>2.2. SqueezeNet &#8212; Dive into cheap deep learning 0.0.2 documentation</title>
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/d2l.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. MobileNet" href="mobilenet.html" />
+    <link rel="prev" title="2.1. Lightweight" href="lightweight.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">2. </span>Lightweight</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">2.2. </span>SqueezeNet</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_lightweight/squeezenet.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://aieye-top.github.io/d2cl/d2cl.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/aieye-top/d2cl">
+                  <i class="fab fa-github"></i>
+                  Github
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Lightweight</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_compression/index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">6. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/edge.html">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Lightweight</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_compression/index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">6. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/edge.html">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="squeezenet">
+<h1><span class="section-number">2.2. </span>SqueezeNet<a class="headerlink" href="#squeezenet" title="Permalink to this headline">¶</a></h1>
+<p>SqueezeNet可以说是最早公开的轻量级网络，是在非常著名的论文《SqueezeNet:
+AlexNet-level accuracy with 50x fewer parametersand&lt;0.5MB model
+size》<a class="reference external" href="https://arxiv.org/abs/1602.07360">1</a>中公开的。这个论文的名字也非常简单直接，说明“SqueezeNet”和“AlexNet”具有相同的精确度，但是参数数量却仅为AlexNet的1/50，同时还可以将模型压缩到0.5
+MB以下。这可以说是一件非常激动人心的事情了，那么SqueezeNet是怎么做到的？下面让我们逐一解释其中的关键技术。首先是模型压缩。模型压缩的思路非常多，包括奇异值分解、权值剪枝、系数矩阵、霍夫曼编码等各类方法，这些方法都是常用的有损压缩方法，这将会在进阶章节中进行介绍。这些方法的思路就是通过有损的方法，在保持精度的条件下大比例的压缩网络。除了模型压缩，我们还希望能够通过调整网络的内部结构提升网络的准确率。结构调整主要包括宏观结构调整和微观结构调整两种。</p>
+<div class="section" id="id1">
+<h2><span class="section-number">2.2.1. </span>动机<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>给定一个参数，少参数的CNN：</p>
+<ol class="arabic simple">
+<li><p><strong>越小的模型，训练越快。</strong>更高效的分布式训练：分布式训练的数据并行方法在每个服务器上保留整个模型的副本，处理训练数据集的不同子集。因此，通信开销与模型中的参数数成正比，越小的模型，训练越快。</p></li>
+<li><p><strong>越小的模型，通信少，频繁更新</strong> Over-the-air update(OTA)，</p></li>
+<li><p><strong>更容易在嵌入式设备上嵌入</strong></p></li>
+</ol>
+</div>
+<div class="section" id="background">
+<h2><span class="section-number">2.2.2. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="id5">
+<img alt="chapter_lightweight/../img/AlexNet.jpg" src="chapter_lightweight/../img/AlexNet.jpg" />
+<p class="caption"><span class="caption-number">Fig. 2.2.1 </span><span class="caption-text">AlexNet</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>AlexNet-level accuracy with 50x fewer parameters and &lt;0.5MB model
+size<a class="reference external" href="https://0809zheng.github.io/2020/06/03/CNN-architecture.htmls">3</a></p>
+<p>4.8MB-&gt;0.47MB AlexNet-level accuracy with 50x fewer parameters and
+&lt;0.5MB model size 2300+引用 不同SR 和 不同3*3卷积核数量下</p>
+<p>SqueezeNet设计了Fire模块，这个模块包括squeeze和expand操作。squeeze
+操作使用一系列1x1卷积，用较小的参数量对特征进行压缩，expand
+操作用一系列1x1卷积和3x3卷积进行特征扩容。通过堆叠该模块，网络实现了AlexNet的精度，但参数量是后者的1/510。<a class="reference external" href="https://0809zheng.github.io/2020/06/03/CNN-architecture.htmls">3</a></p>
+<p>首先是模型压缩。模型压缩的思路非常多，包括奇异值分解、权值剪枝、系数矩阵、霍夫曼编码等各类方法，这些方法都是常用的有损压缩方法，这将会在进阶章节中进行介绍。这些方法的思路就是通过有损的方法，在保持精度的条件下大比例的压缩网络。除了模型压缩，我们还希望能够通过调整网络的内部结构提升网络的准确率。结构调整主要包括宏观结构调整和微观结构调整两种。</p>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">2.2.3. </span>微观结构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>所谓微观结构调整一般是指调节网络中的某些组成模块。比如最初的LeNet做手写数字识别使用的是5×5的卷积核，后来的VGGNet使用了3×3的卷积核，甚至在Google的Inception中使用了1×1的卷积核。理论上相同层数的网络，卷积核越小，参数就越少。发展到后来，Google甚至提出了Inception模块，模块中包含了不同维度的滤波器（比如1×1、5×5、1×3、3×1等），然后选用不同的模块组成不同的网络，经过不断的实验，希望通过多个小卷积核替代单一的大卷积核，以带来更好的效果。</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">2.2.4. </span>宏观结构<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>宏观结构调整其实就是调整网络的层次数和模块的组织方式，这在本章开头已经提到过。关于宏观结构调整有一种与众不同的结构调整方式就是将跨越多个层次的不同层的输出连接到同一个层，比如将来自第6层和第9层的激活值输入到一个新层中，这种思路我们称之为旁路连接，形象一点说这种方法可以发现更多潜在的特征组合形式。</p>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">2.2.5. </span>核心思路<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>结合这些设计思路我们来看看SqueezeNet是如何做到模型压缩的。首先SqueezeNet采用了3个主要策略以确保网络中的参数数量更少。</p>
+<ol class="arabic simple">
+<li><p>使用1×1的卷积核来替代3×3的卷积核，以减少卷积层的参数数量，这样可以使卷积层参数数量减少9倍。</p></li>
+<li><p>如果3×3的卷积核无法替代，那么就减少3×3卷积核的通道数量，比如将128×3×3的卷积核减少到32×3×3，那么卷积层参数数量就可以减少4倍。</p></li>
+<li><p>在卷积层后接入降采样，以得到更大的激活图，也就是说将卷积层的步长设置成大于1，步长越大，卷积运算跳过的数据就越多。在早期进行网络设计时，一般前面的层步长比较大，后面的层步长比较小，导致网络输出的激活图也比较小，影响了分类精度。图6-1是SqueezeNet的核心微观结构FireModule，Fire
+Module的输入是一组1×1的卷积核，传送到混合了1×1的卷积核和3×3的卷积核的混合扩展层。这里可以调节SqueezeNet的3个超参数，分别是Fire
+Module的层数、Fire
+Module中1×1卷积核的数量和3×3卷积核的数量。如图6-1所示</p></li>
+</ol>
+<p>由图6-2我们可以看到除了输出、输出前后接入了卷积层，中间就是指定数量的Fire
+Module层。除了这些主要方法，SqueezeNet还使用了一些其他小技巧。</p>
+<ol class="arabic simple">
+<li><p>由于1×1和3×3的输出激活值的高度和宽度不等，因此输入3×3滤波器的数据会添加上1像素的0边界。</p></li>
+<li><p>激活层使用ReLU替代Sigmoid。ReLU全称是Rectified Linear
+Unit，最常见的形式是f(x) =max(0,
+x)。ReLU训练的收敛速度会比传统的Sigmoid/tanh快很多。</p></li>
+<li><p>网络中不使用全连接层。全连接层是参数最多的层，需要两层神经元完全连接，如果n个神经元的层和m个神经元的层全连接，将会有m×n个参数。去掉全连接层会减少大量的参数。</p></li>
+<li><p>训练开始的学习率是0.04，随着训练线性减少学习率。这些小技巧都是经过反复实验与经验的总结，值得我们多多借鉴。</p></li>
+</ol>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">2.2. SqueezeNet</a><ul>
+<li><a class="reference internal" href="#id1">2.2.1. 动机</a></li>
+<li><a class="reference internal" href="#background">2.2.2. Background</a></li>
+<li><a class="reference internal" href="#id2">2.2.3. 微观结构</a></li>
+<li><a class="reference internal" href="#id3">2.2.4. 宏观结构</a></li>
+<li><a class="reference internal" href="#id4">2.2.5. 核心思路</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="lightweight.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>2.1. Lightweight</div>
+         </div>
+     </a>
+     <a id="button-next" href="mobilenet.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>2.3. MobileNet</div>
+        </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

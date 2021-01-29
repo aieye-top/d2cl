@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>&lt;no title&gt; &#8212; Dive into cheap deep learning 0.0.2 documentation</title>
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/d2l.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">&lt;no title&gt;</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_lightweight/Xception.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://aieye-top.github.io/d2cl/d2cl.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/aieye-top/d2cl">
+                  <i class="fab fa-github"></i>
+                  Github
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">2. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="squeezenet.html">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_compression/index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">6. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/edge.html">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">2. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="squeezenet.html">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_compression/index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">6. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/edge.html">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <p>Xception是Google提出的，arXiv 的V1 于2016年10月公开《Xception: Deep
+Learning with Depthwise Separable Convolutions 》，Xception是对Inception
+v3的另一种改进，主要是采用depthwise separable
+convolution来替换原来Inception v3中的卷积操作。</p>
+<p>4.1设计思想 采用depthwise separable convolution来替换原来Inception
+v3中的卷积操作 与原版的Depth-wise convolution有两个不同之处：
+第一个：原版Depth-wise convolution，先逐通道卷积，再11卷积;
+而Xception是反过来，先11卷积，再逐通道卷积； 第二个：原版Depth-wise
+convolution的两个卷积之间是不带激活函数的，而Xception在经过1<em>1卷积之后会带上一个Relu的非线性激活函数；
+4.2网络架构 feature
+map在空间和通道上具有一定的相关性，通过Inception模块和非线性激活函数实现通道之间的解耦。增多3</em>3的卷积的分支的数量，使它与1<em>1的卷积的输出通道数相等，此时每个3</em>3的卷积只作用与一个通道的特征图上，作者称之为“极致的Inception（Extream
+Inception）”模块，这就是Xception的基本模块。<a class="reference external" href="https://leesen998.github.io/2018/01/15/%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0_%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9%E3%80%81%E5%8A%A0%E9%80%9F%E5%8F%8A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%83%A8%E7%BD%B2/">1</a></p>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

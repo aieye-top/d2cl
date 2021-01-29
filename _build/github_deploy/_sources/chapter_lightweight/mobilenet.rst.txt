@@ -20,7 +20,11 @@
 MobileNet
 =========
 
+MobileNet可谓是轻量级网络中的Inception，经历了一代又一代的更新。成为了学习轻量级网络的必经之路。MobileNetV1怎么和Xception的网络block结构一样，都大量用到了深度可分离。2016年6月，谷歌提出了MobileNetV1，由于各种原因当时没有挂上arxiv，一直到2017年4月才提交。好巧不巧，谷歌的另一团队，同时提出了Xception。
+
 该网络将传统的卷积操作替换深度可分离卷积，即Depthwise卷积和Pointwise卷积的组合，相比传统的卷积操作，该组合可以大大节省参数量和计算量。与此同时，MobileNetV1也可以用于目标检测、图像分割等其他视觉任务中。[5]
+
+只有一句话，MobileNetV1就是把VGG中的标准卷积层换成深度可分离卷积就可以了。
 
 MobileNet is a stack of the separable convolution modules which are
 composed of depthwise conv and conv1x1 (pointwise conv). Image for post
@@ -42,16 +46,33 @@ Activation
 
 小、速度
 
+不同于其他网络只关注小容量，MobileNet不仅关注低延迟，也关注小容量。
+
 本文方法
 --------
 
 根据应用需求与资源限制（延迟，大小） 优化延迟 深度可分离卷积
 设置两个超参数：balance准确率与延迟
 
+深度可分离卷积 Depthwise Separable convolutions[11]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MobileNet使用了一种称之为 Depthwise Separable
+convolutions来替代原有的传统3D卷积，减少了卷积核的冗余表达。在计算量和参数数量明显下降之后，卷积网络可以应用在更多的移动端平台。
+
+采用DW卷积在减少参数数量的同时提升运算速度。但是由于每个feature
+map只被一个卷积核卷积，因此经过DW输出的feature
+map不能只包含输入特征图的全部信息，而且特征之间的信息不能进行交流，导致“信息流通不畅”。
+采用PW卷积实现通道特征信息交流，解决DW卷积导致“信息流通不畅”的问题。
+
 结构
 ----
 
 通过步长来降采样 (n+2p-f)/s + 1\* (n+2p-f)/s + 1 尺度维度变化
+
+用stride=2的卷积替换pooling
+直接在卷积时利用stride=2完成了下采样，从而节省了需要再去用pooling再去进行一次下采样的时间，可以提升运算速度。同时，因为pooling之前需要一个stride=1的
+conv，而与stride=2 conv的计算量想比要高近4倍(个人理解)。
 
 深度可分离卷积
 --------------
@@ -60,7 +81,54 @@ Activation
 
 深度可分离卷积 分为 深度卷积和 点卷积
 
+MoblieNets瘦身[10]
+------------------
+
+宽度参数
+~~~~~~~~
+
+有时，嵌入式端需要更小、更快的网络模型,
+而原先的MobileNet架构不能满足要求。MobileNet
+中通过引入一个控制网络均匀变薄的宽度乘数器 :math:`\alpha`,
+使得输入通道数从m变成 :math:`\alpha m`, 输出通道数 从n变换成
+:math:`\alpha n` 。引入宽度乘数器后, Depthwise separable
+convolution的计算成本为
+:math:`D_{k} \cdot D_{k} \cdot \alpha M \cdot \beta D_{F} \cdot D_{F} \cdot D_{F}+\alpha M \cdot \alpha N \cdot D_{F} \cdot D_{F}, \alpha \in(0,1]_{\circ}`
+当 :math:`\alpha=1` 时, 为基本的 MobileNet; :math:`\alpha<1`
+为通道数缩减的MobileNet。由计算成本公式可以看出，宽度乘法器使参数
+数量大约降低了 :math:`\alpha^{2}`, 降低了计算成本。
+
+分辨率参数
+~~~~~~~~~~
+
+在引入宽度乘数器 :math:`\alpha` 的基础上,
+MobileNet又引入了一个可以控制改变相应输入图像大小和相应
+神经网络内部每一层大小的参数分辨率乘法器 :math:`\beta`,
+使得输入图像和神经网络内部每一层分辨率变为 :math:`\beta \cdot D_{F}`
+。引入宽度乘法器 :math:`\alpha` 和分辨率乘法器 :math:`\beta` 后,
+Depthwise separable convolutions的计算 成本：
+:math:`D_{k} \cdot D_{k} \cdot \alpha M \cdot \beta D_{F} \cdot \beta D_{F}+\alpha M \cdot \alpha N \cdot \beta D_{F} \cdot \beta D_{F}, \alpha \in(0,1], \beta \in(0,1]_{\circ}`
+:math:`\alpha=1, \beta=1` 时, 为基本MobileNet; :math:`\beta<1` 时,
+为缩减MobileNet。
+
+分析
+~~~~
+
+引入宽度乘法器 :math:`\alpha` 和分辨率乘法器 :math:`\beta`
+可以让MobileNet 参数量减少，但同时也会让准确率相对
+于基准MobileNet在实时性上与精确度上有了下降。所以为了达到想要的效果,
+选择一个合适大小 的宽度乘法器 :math:`\alpha` 和分辨率乘法器
+:math:`\beta`, 寻求精度与参数大小之间的一个平衡。
+
 TODO:https://ai.deepshare.net/detail/v_5ee645312d94a_eMNJ5Jws/3?from=p_5ee641d2e8471_5z8XYfL6&type=6
+
+训练
+~~~~
+
+MobileNet中采用同步梯度与RMSprop共同作用来更新网络的梯度大小。MobilNet参数量较少，整个模型不是很复杂，不容易出现过拟合，所以在训练的时候不使用正则化与数据增强策略。其余训练策略与普通网络方式相同。
+
+MobileNet通过使用depthwise separable
+convolutions大幅降低了网络的参数量和乘加次数，适于部署于嵌入式端。当我们需要进行目标检测、人脸识别等任务时，需要用到卷积神经网络提取特征，可以将MobileNet替代原有网络中的特征提取网络，来降低网络参数量，提高实时性。
 
 .. code:: py
 
@@ -305,4 +373,5 @@ multiply)减少参数量。深度可分离卷积把标准的卷积因式分解�
 convolution)和一个逐点卷积(pointwise
 convolution)。\ `7 <https://cygao.xyz/2019/07/12/lightweight/>`__
 
-https://github.com/0809zheng/Hung-yi-Lee-ML2020-homework/blob/master/hw7_Network_Compression/hw7_Architecture_Design.ipynb
+https://github.com/0809zheng/Hung-yi-Lee-ML2020-homework/blob/master/
+hw7_Network_Compression/hw7_Architecture_Design.ipynb

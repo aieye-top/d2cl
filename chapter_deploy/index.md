@@ -5,6 +5,7 @@
 :maxdepth: 2
 
 hardware
+edge
 mobile
 MCU
 AI-zhongtai

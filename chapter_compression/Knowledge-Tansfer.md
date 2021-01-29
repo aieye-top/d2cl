@@ -1,0 +1,5 @@
+# 知识迁移（Knowledge Tansfer, KT）
+
+这种方法将大模型中的“知识”迁移到小模型中，早期的 KT 方法被普遍用于网络模型压缩。关键思想是经过大模型标注的数据会包含大量对小模型有用的信息。例如在多分类问题中，如果大模型对输入图片在一些类中输出较高的概率，那意味着这些类可能共享一些视觉特征。通过让小模型模拟这些概率，可以学习到比训练集可用信息更多的知识。[1]
+
+[1]: https://www.infoq.cn/article/Y8UuJHRTGvrZVKKPJFh2?utm_source=related_read_bottom&utm_medium=article

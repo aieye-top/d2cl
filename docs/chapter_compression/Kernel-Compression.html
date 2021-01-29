@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>卷积核压缩 &#8212; Dive into cheap deep learning 0.0.2 documentation</title>
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/d2l.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">卷积核压缩</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_compression/Kernel-Compression.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://aieye-top.github.io/d2cl/d2cl.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/aieye-top/d2cl">
+                  <i class="fab fa-github"></i>
+                  Github
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">2. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/squeezenet.html">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">6. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/edge.html">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">2. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/squeezenet.html">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_deploy/index.html">6. Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/edge.html">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_deploy/AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="id1">
+<h1>卷积核压缩<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>较小卷积核的参数量和计算成本远小于更大的卷积核。然而，删除掉所有的大型卷积层意味着影响
+DNN
+的平移不变性，会降低准确度。有些研究通过识别冗余的卷积核并替换为较小的卷积核。例如
+SqueezeNet 就通过三种策略用 11 的卷积核替换 33 的卷积核来减小参数。</p>
+<p>表 3 对比了不同卷积核压缩技术的性能：相比于 AlexNet，SqueezeNet
+的参数减少了 98%，但增加了大量的操作；MobileNet 在瓶颈层（bottleneck
+layers）使用深度可分离卷积减小计算量、延迟和参数量；在使用深度可分离卷积时，通过保留较小的特征，只扩展到较大的特征空间，实现了较高的精度。</p>
+<div class="section" id="id2">
+<h2>矩阵分解<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>张量分解和矩阵分解以和-积的形式加速 DNN
+操作，通过将多维张量分解为更小的多个矩阵来消除冗余计算。一些因式分解方法能够将
+DDNs
+提速至四倍，因为它们创建了更密集的参数矩阵，能够避免非结构化稀疏乘法的局部问题。为了最小化精度损失，每次只实现单层的矩阵分解。首先对一层的参数进行分解，随后根据重构误差来分解后续层。这种按层分解的方法难以应用到大型的
+DNNs 中，因为随着 DNN
+深度的增加，因式分解的超参数将会呈指数级增长。为了将这种方法在大型 DNNs
+中实现，Wen 等人使用了紧凑的核形状和深层结构来减小分解超参数的数量。</p>
+<p>因式分解的方法众多，大多数都可以应用于 DNN
+的加速，但有些方法无法在精度和计算复杂度之间实现最佳的平衡。例如，典型聚并分解（Canonical
+Polyadic
+Decompo<a class="reference external" href="https://www.infoq.cn/article/Y8UuJHRTGvrZVKKPJFh2?utm_source=related_read_bottom&amp;utm_medium=article">1</a>sition,
+CPD）和批量归一化分解（Batch Normalization Decomposition,
+BMD）在精度上能够取得很好的表现，但 Tucker-2
+分解和奇异值分解的精度就较差。典型聚并分解比批量归一化分解具有更好的压缩效果，但是批量归一化分解取得的准确性要优于典型聚并分解。除此以外，典型聚并分解的优化问题有时并不可解，而批量归一化分解的解却始终存在。</p>
+<p>这种技术的优势在于，卷积层和全连接层可以使用相同的矩阵分解方法，通过 CPD
+和 BMD
+均能够取得不错的性能。但由于理论理解的限制，难以说明为什么有些分解方法的效果能够达到较好的精度，有些方法却不能。此外，由于矩阵分解造成及计算开销常常与减小操作量获得的性能抵消。同时随着
+DNNs
+深度的增加，应用矩阵分解的训练时间整体会呈指数级增长，因此很难应用于大型网络。而这是由于在空间内搜索以寻找正确分解超参数的时间过大，可以在训练过程中学习超时参数，而非在整个空间内进行搜索，从而加速对大型
+DNN 的训练。</p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">卷积核压缩</a><ul>
+<li><a class="reference internal" href="#id2">矩阵分解</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

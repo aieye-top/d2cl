@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>6.2. Edge &#8212; Dive into cheap deep learning 0.0.2 documentation</title>
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/d2l.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.3. mobile" href="mobile.html" />
+    <link rel="prev" title="6.1. 芯片" href="hardware.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">6. </span>Deployment</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">6.2. </span>Edge</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_deploy/edge.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://aieye-top.github.io/d2cl/d2cl.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/aieye-top/d2cl">
+                  <i class="fab fa-github"></i>
+                  Github
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">2. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/squeezenet.html">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_compression/index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <span class="title-text">
+                  Dive into cheap deep learning
+              </span>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/time.html">1.1. time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/technology.html">1.2. 技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/privacy.html">1.3. 隐私</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/money.html">1.4. money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_introduction/data.html">1.5. Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_lightweight/index.html">2. Lightweight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/lightweight.html">2.1. Lightweight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/squeezenet.html">2.2. SqueezeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet.html">2.3. MobileNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/mobilenet_v2.html">2.4. MobileNet-v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/shufflenet.html">2.5. ShuffleNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_lightweight/GhostNet.html">2.6. GhostNet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_compression/index.html">3. Compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/compression.html">3.1. 模型压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/pruning.html">3.2. 参数剪枝(Pruning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/Knowledge-Distillation.html">3.3. Knowledge-Distillation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_compression/quantization.html">3.4. 量化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_write_code/index.html">4. Write code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/jupyter.html">4.1. Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_write_code/API.html">4.2. API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_train/index.html">5. Train</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/Active_Learning.html">5.2. Active Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/pretrain.html">5.3. Pretrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/improve.html">5.4. 改进</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter_train/structure.html">5.5. 结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">6.1. 芯片</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">6.3. mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MCU.html">6.4. MCU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AI-zhongtai.html">6.5. AI 中台</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="edge">
+<h1><span class="section-number">6.2. </span>Edge<a class="headerlink" href="#edge" title="Permalink to this headline">¶</a></h1>
+<p>对5G+AI时代的新型算力平台（边缘计算）与网络连接（算力网络）进行了系统性的介绍。</p>
+<p>shi
+W等人<a class="reference external" href="Shi%20W,%20Fellow,%20IEEE,%20et%20al.%20Edge%20Computing:%20Vision%20and%20Challenges.%20IEEE%20Internet%20of%20Things%20Journal,%202016,%203(5):637-646.">10</a>将“边缘”定义为数据源与云数据中心之间的任何计算资源和网络资源.对于其优势和必要性,Hu
+W等人<a class="reference external" href="Hu%20W,%20Gao%20Y,%20Ha%20K,%20et%20al.%20Quantifying%20the%20impact%20of%20edge%20computing%20on%20mobile%20applications.%20Proceedings%20of%20the%207th%20ACM%20SIGOPS%20Asia-Pacific%20Workshop%20on%20Systems.%20ACM,%202016:%205">11</a>通过实验进行了相关验证,并通过实验证明移动设备盲目卸载计算任务到云可能导致更低的性能和更高的能耗.</p>
+<p>边缘计算的定义是：在靠近物或数据源头的网络边缘侧，融合网络、计算、存储、应用核心能力的分布式开放平台（架构），就近提供边缘智能服务，满足行业数字化在敏捷连接、实时业务、数据优化、应用智能、安全与隐私保护等方面的关键需求。它可以作为连接物理和数字世界的桥梁，使能智能资产、智能网关、智能系统和智能服务。</p>
+<p>边缘计算是在网络边缘提供计算、存储等资源，通过分布式的系统满足上层应用对时延等性能指标的要求，同时降低资源消耗，降低综合支出。因此边缘计算无法像传统云计算那样通过集中化、规模化管控，需要找到新的途径实现对离散资源的管控与资源互通，并实现网络资源和计算资源的协同调度，从而向用户提供有质量保证的服务。<a class="reference external" href="https://weread.qq.com/web/reader/eab32840721a4865eab660dka87322c014a87ff679a21ea">1</a></p>
+<div class="section" id="ai9">
+<h2><span class="section-number">6.2.1. </span>端侧AI的优点<a class="reference external" href="https://www.bilibili.com/video/BV14V411q7C2">9</a><a class="headerlink" href="#ai9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>隐私性:
+数据的存储计算等都在本地,避免了传到云端可能带来的数据安全问题。</p></li>
+<li><p>可靠性: 决策在本地大幅降低了数据经过更长的通路产生错误的几率。</p></li>
+<li><p>低延时: 数据的存储计算在本地处理、本地响应方面时间更短速度更快。</p></li>
+<li><p>高效率：选择性占用网络带宽资源,高效利用网络带宽,减少不必要流量,提升效率。</p></li>
+<li><p>个性化：
+透过持续学习、模型调整和保护隐私的分布式学习,终端侧人工智能使设备具有与人类相似的理解能力和行为,给人们带来更个性化的互动与体验。</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">6.2.2. </span>算力<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>用于AI和图形处理的每秒浮点运算次数，FLOP/s），智能社会对算力的需求主要是浮点运算能力，专用AI芯片如华为昇腾910采用7nm工艺，半精度FP16算力达256TFLOP/s，低功耗的12nm芯片昇腾310半精度FP16算力也达到了8
+TFLOP/s。过去5年，随着深度学习算法的演进，AI训练对算力的需求增加了30万倍，一些互联网厂家已经将算力作为服务提供给用户，从1
+FP 32 TFLOP/s或8 FP 16 TFLOP/s到4FP 32 TFLOP/s或32 FP 16
+TFLOP/s的AI推理加速服务，简单的语音语义识别或单流视频分析 8 FP16
+TFLOP/s即可满足，复杂的推荐引擎或风险检测则需要32 FP 16
+TFLOP/s的算力<a class="reference external" href="https://weread.qq.com/web/reader/eab32840721a4865eab660dk16732dc0161679091c5aeb1">2</a></p>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">6.2.3. </span>新型算力平台：边缘计算<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>边缘计算包含把数据处理任务放至网络边缘的设备上，使其尽可能地靠近数据源。这种计算方式能以非常高的速度实现实时的数据处理，对很多具备机器学习能力的复杂物联网方案而言是必备能力。在此基础上，边缘计算能够缓解网络压力、降低能耗、提升安全性以及改善数据隐私。<a class="reference external" href="https://tryolabs.com/blog/machine-learning-on-edge-devices-benchmark-report/">7</a></p>
+<p>中国电信在深圳召开的5G创新合作大会上对外展示了自主研发的基于分布式开放平台的多接入边缘计算（Multi-access
+Edge
+Computing，MEC）平台。该平台就近提供边缘智能服务，支持固定/移动网络接入、第三方能力/应用灵活部署及边缘能力统一开放，可应用于工业互联网、高清视频、车联网等行业。<a class="reference external" href="https://weread.qq.com/web/reader/eab32840721a4865eab660dk8f132430178f14e45fce0f7">3</a></p>
+<p>边缘计算凭借“边缘”的特性，可以更好地支撑云端的应用，而云计算则能够基于大数据分析，完成边缘节点无法胜任的计算任务，助力边缘计算更加满足本地化的需求。</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">6.2.4. </span>端计算端<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>即用户终端，如PC、手机和物联网终端设备等。用户终端设备具有一定的计算能力，能够对采集的数据进行实时处理，进行本地优化控制、故障自动处理、负荷识别和建模等操作。在和网络进行连接后，用户终端设备可以把加工汇集后的高价值数据与云端进行交互，在云端进行全网的安全和风险分析、大数据和人工智能的模式识别、节能和策略改进等操作。同时，如果遇到网络覆盖不到的情况，可以先在边缘侧进行数据处理，当有网络时再将数据上传到云端，在云端进行数据存储和分析<a class="reference external" href="https://weread.qq.com/web/reader/eab32840721a4865eab660dk8f132430178f14e45fce0f7">3</a>。</p>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">6.2.5. </span>算力网络<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>算力网络是一种通过网络分发服务节点的算力信息、存储信息、算法信息等，结合网络信息（如路径、时延等），针对用户需求，提供最佳的资源分配及网络连接方案，并实现整网资源最优化使用的解决方案。算力网络将具备以下四个基本特征。</p>
+<ol class="arabic simple">
+<li><p>资源抽象：算力网络需要将计算资源、存储资源、网络资源（尤其是广域范围内的连接资源）及算法资源等都抽象出来，作为产品的组成部分提供给用户。</p></li>
+<li><p>业务保证：以业务需求划分服务等级，而不是简单地以地域划分，向用户承诺诸如网络性能、算力大小等服务等级的协议（Service-LevelAgreement，SLA），屏蔽底层的差异性（如异构计算、不同类型的网络连接等）。</p></li>
+<li><p>统一管控：统一管控云计算节点、边缘计算节点、网络资源（含计算节点内部网络和广域网络）等，根据业务需求对算力资源及相应的网络资源、存储资源等进行统一调度。</p></li>
+<li><p>弹性调度：实时监测业务流量，动态调整算力资源，完成各类任务，高效处理和整合输出，并在满足业务需求的前提下实现资源的弹性伸缩，优化算力分配</p></li>
+</ol>
+</div>
+<div class="section" id="jetson-nano7">
+<h2><span class="section-number">6.2.6. </span>硬件：Jetson Nano<a class="reference external" href="https://tryolabs.com/blog/machine-learning-on-edge-devices-benchmark-report/">7</a><a class="headerlink" href="#jetson-nano7" title="Permalink to this headline">¶</a></h2>
+<p>推理时间第一名：</p>
+<p>在推理时间方面，组合使用 ResNet-50、TensorRT 和 PyTorch 的 Jetson Nano
+获胜。该组合用 2.67 毫秒处理一张图像，即每秒处理 375 帧。</p>
+<p>这个结果很让人惊讶，因为其超过英伟达公布的推理速度十倍之多。结果差异的原因很可能是英伟达使用的是
+TensorFlow，而非 PyTorch。</p>
+<p>准确度第一名：</p>
+<p>准确度方面，最佳结果来自 Jetson Nano 与 TF-TRT 和 EfficentNet-B3
+的组合，其实现了 85%
+的准确度。但是，这些结果是相对的，因为我们训练模型时，有的模型使用的数据集比其它模型更大一些。</p>
+<p>可以看到，当我们向模型输入更小的数据集时，准确率会更高；而当使用完整数据集时，准确度更低。这个结果的原因是我们没有对更小的数据集进行随机排序，因此其中的图像没有实现合理的平衡。</p>
+<p>当涉及到选择和部署预编译的模型和框架时。Jetson 是最灵活的。</p>
+</div>
+<div class="section" id="kubeedge4">
+<h2><span class="section-number">6.2.7. </span>软件：KubeEdge<a class="reference external" href="https://weread.qq.com/web/reader/eab32840721a4865eab660dkc0c320a0232c0c7c76d365a">4</a><a class="headerlink" href="#kubeedge4" title="Permalink to this headline">¶</a></h2>
+<p>KubeEdge构建于Kubernetes之上，是将Kubernetes原生的容器编排能力扩展到了边缘节点上，并增加了对边缘设备的管理功能。它由云端部分和边缘部分组成，核心基础架构提供了对网络、应用部署和云边之间元数据同步的支持。它同时支持MQTT，使得边缘设备可以通过边缘节点接入集群。
+<a class="reference external" href="https://github.com/kubeedge/kubeedge">https://github.com/kubeedge/kubeedge</a></p>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">6.2.8. </span>边缘智能<a class="reference external" href="https://www.jiqizhixin.com/articles/2020-09-03-3">6</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>边缘智能不是边缘计算和人工智能的简单结合，虽然目前国际上尚未建立边缘人工智能的标准架构和统一算法，但各大厂商已经开始在相关领域进行探索。谷歌、亚马逊和微软等传统云服务提供商推出了边缘人工智能服务平台，通过在终端设备本地运行预先训练好的模型进行ML（Machine
+Learning，机器学习）推断，将智能服务推向边缘。此外，市场上已经出现多种边缘人工智能芯片，如谷歌edge
+TPU、英特尔Nervana NNP、华为Ascend 910和Ascend 310等。</p>
+<p>另外，还有很多企业都试图在智能手机、汽车甚至可穿戴设备等边缘设备上运行人工智能算法，而不是跟中心云平台或服务器通信，使得边缘设备具备了在本地处理信息的能力，并且可以更快速地对情况做出响应。边缘人工智能对消费者电子、电信、医疗影像等主流行业均有应用意义。比如说在监控摄像头上运行人脸识别、肩颈识别等人工智能算法，可以快速提供安防威胁识别，如果结合本地数据存储，则能够更进一步发现和定位安全威胁嫌疑人，此外，边缘人工智能在即时驾驶决策、婴儿监视器、无人机、机器人视觉能力（无互联网连接）等方面也具有非常积极的价值。</p>
+<p>需要指出的是，边缘人工智能具有减少延迟、快速做出决策的优势，但也存在计算和存储能力受限的问题，因此边缘人工智能未来将与云端人工智能构成混合模式，从而提供更好的人工智能服务。</p>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">6.2.9. </span>挑战<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>边缘智能产业生态逐渐构建，不过在形势大好的背后，边缘智能仍然面临着各种各样的难题。<a class="reference external" href="https://www.jiqizhixin.com/articles/2020-10-10">5</a></p>
+<ol class="arabic simple">
+<li><p>由于云计算服务的下沉，有些流量直接通过本地边缘智能平台流出。在传统核心网中，计算、控制、安全等均在核心网内部完成，如何对边缘智能平台的流量进行计费和控制，需要进行研究；同时边缘智能在实际的网络架构上有多种不同的部署规划，比如部署在无线接入云、边缘云及汇聚云，而不同的架构所面临的问题也略有不同。</p></li>
+<li><p>边缘智能所服务的对象以及场景较为多样化，如何使一套边缘智能平台适应多样化的第三方应用，也是目前面临的一个问题。</p></li>
+<li><p>因为业务的碎片化，边缘智能可能针对单一场景或者两三个场景进行部署，不仅需要在整个部署能力特性上进行明确定义，且需要考虑如何进行敏捷智能化的运维。</p></li>
+<li><p>如何更好地引入人工智能，发挥边缘计算的整体优势有待研究。</p></li>
+<li><p>协调如何将边缘智能平台内部基于OpenStack
+的平台管理子系统进一步轻量化，并考虑将一些微服务架构迅速地引入边缘智能平台，从而降低管理开销。此外，边缘智能的商业运营模式、部署位置、自愈和自动扩缩容等问题仍需要得到进一步的明确和解决。</p></li>
+</ol>
+<p><img alt="image0" src="chapter_deploy/imgtiaozhan.png" />
+然而,目前针对模型计算任务划分的研究相对较少,尝试针对基于深度神经网络的算法模型进行更细致的计算任务划分,结合边缘计算,解决深度学习技术在嵌入式领域应用性较差的问题<a class="reference external" href="http://www.jos.org.cn/jos/ch/reader/view_abstract.aspx?flag=1&amp;file_no=5938&amp;journal_id=jos">8</a></p>
+<p><a class="reference external" href="https://github.com/StevenJokess/Awesome-System-for-Machine-Learning/blob/master/edge_system.md#edge-or-mobile-papers">https://github.com/StevenJokess/Awesome-System-for-Machine-Learning/blob/master/edge_system.md#edge-or-mobile-papers</a></p>
+</div>
+<div class="section" id="usb">
+<h2><span class="section-number">6.2.10. </span>USB<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://twitter.com/TensorFlow/status/1353764579034222593">https://twitter.com/TensorFlow/status/1353764579034222593</a></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">6.2. Edge</a><ul>
+<li><a class="reference internal" href="#ai9">6.2.1. 端侧AI的优点9</a></li>
+<li><a class="reference internal" href="#id1">6.2.2. 算力</a></li>
+<li><a class="reference internal" href="#id2">6.2.3. 新型算力平台：边缘计算</a></li>
+<li><a class="reference internal" href="#id3">6.2.4. 端计算端</a></li>
+<li><a class="reference internal" href="#id4">6.2.5. 算力网络</a></li>
+<li><a class="reference internal" href="#jetson-nano7">6.2.6. 硬件：Jetson Nano7</a></li>
+<li><a class="reference internal" href="#kubeedge4">6.2.7. 软件：KubeEdge4</a></li>
+<li><a class="reference internal" href="#id5">6.2.8. 边缘智能6</a></li>
+<li><a class="reference internal" href="#id6">6.2.9. 挑战</a></li>
+<li><a class="reference internal" href="#usb">6.2.10. USB</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="hardware.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>6.1. 芯片</div>
+         </div>
+     </a>
+     <a id="button-next" href="mobile.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>6.3. mobile</div>
+        </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

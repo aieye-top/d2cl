@@ -28,4 +28,30 @@ API经济是指企业间通过API建立合作关系而产生的经济活动，�
 1. 提供垂直技术的人工智能开放平台,如专注计算机视觉的旷视科技Face++、商汤科技等;
 1. 提供垂直场景技术的人工智能开放平台,如安防场景的海康威视、大华股份乐橙开放平台、教育场景的好未来AI开放平台等。
 
+## 定制化
+
+计算机视觉领域内的大部分企业都提供API、SDK、定制化解决方案的产品交付形式，但对行业用户来说，API与SDK产品需要进行二次开发与调整使用难度较大，效果与体验不好，因此行业用户普遍青睐定制解决方案。
+
+https://www.aminer.cn/research_report/5f8d2e82e8a87f775ad21903?download=true&pathname=TRCV.pdf
+## 开源软件
+
+https://pytorch.org/
+
+## Android NNAPI
+
+Android Neural Networks API 致力于为高层机器学习框架提供用于构建和训练神经网络的基础功能层。关于 Android Neural Networks API 的角色定位请参考官方文档。[2]
+
+下图是 Android Neural Networks API 的软件栈，图中箭头表示了调用关系。 作为操作系统一部分，同时又是和底层设备高度相关的一套系统，Android Neural Networks API 的接口包括两部分：高层用户侧的 NDK 接口（图中 Android NN API）、和底层硬件设备侧的 HAL 接口（途中的 Android NN HAL）。
+
+其中，NDK 接口是一组包含在 NDK 之中的 C 风格接口。通常这层接口的正确性由 CTS 确认。如图中所示，这一层是设计给深度学习框架使用的。当然，Android 应用也可以直接使用这一层接口，但似乎没什么必要。因为应用开发者直接使用 TensorFlow Lite、PyTorch/Caffe2 这类框架，框架后端对接 Android Neural Networks API （目前 TensorFlow Lite 和 PyTorch/Caffe2 已经集成）。接口包括常见的网络定义、编译、执行等步骤，具体参见下文的编程模型和实现介绍。
+
+HAL 接口是一组用 HAL Interface Definition Language（HIDL） 描述的接口。HIDL 是 Android Oero 引入的全新的用于操作系统和硬件设备交互的机制。通常，VTS 检验设备提供的底层实现的正确性。引入 Android Neural Networks API 之后，硬件供应商在 Android 平台上只需要支持 HAL 接口这一层，继而从繁杂的框架支持中解放。从图中可以看到，在一个系统中可以存在多个不同种类的后端驱动设备。
+
+Android Neural Networks API 包含一个 Runtime 。Android Neural Networks Runtime 的功能并不复杂，主要目的还是为了对接后端硬件。同时，考虑到硬件驱动在特定功能（例如某个新的神经网络算子）的可用性，Android Neural Networks Runtime 还包含了 CPU 回退（fallback）的功能——当不能使用专用设备计算时，依然可以保证基本的功能——这就像在图形系统中也可以用 CPU 模拟图形设备。Runtime 将在 Android Neural Networks API 内部结构等小节中继续介绍。
+
+
+PyTorch Cookbook（常用代码段整理合集） - 张皓的文章 - 知乎
+https://zhuanlan.zhihu.com/p/59205847
+
 [1]: https://www.sgpjbg.com/baogao/21424.html
+[2]: https://jackwish.net/2018/on-android-nnapi.html
